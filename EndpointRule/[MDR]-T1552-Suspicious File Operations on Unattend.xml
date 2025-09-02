@@ -1,0 +1,18 @@
+[Author]:sega
+[Coworker]:
+[Description]:
+This rule detects potential credential theft by monitoring for any file operations (such as read, write, or delete) on Windows unattend.xml answer files.
+
+unattend.xml 是什麼？
+這是在自動化部署 Windows 系統時使用的設定檔。系統管理員會將所有安裝過程中需要回答的問題（如電腦名稱、產品金鑰、時區、要建立的使用者帳戶與密碼等）預先寫在這個 XML 檔案中，從而實現「無人值守」安裝。
+
+在系統部署完成後，這些 unattend.xml 檔案有時會被遺忘並殘留在系統的某些路徑下（例如 C:\Windows\Panther\）。這些檔案中通常包含了新建立的本機管理員帳號和其明文密碼，或是經過 Base64 編碼（可輕易還原）的密碼。
+因此，unattend.xml 檔案是駭客在入侵主機後，進行權限提升或橫向移動時，尋找本地憑證的**「金礦」**。
+
+
+[status]: EXPERIMENTAL
+#EXPERIMENTAL" (實驗性)、"STABLE" (穩定)、"DEPRECATED" (已棄用)。
+[Severity]: High
+
+
+(Name =~ unattend.xml and Name !~ dll and Behavior Type IN File Create, File Delete, File Read, File Rename, File Write) and (OS Type IN Windows)
