@@ -1,0 +1,6 @@
+[Author]:sega
+[Coworker]:
+[Description]:Suspicious PowerShell Runspace Host with Network Egress
+[status]: EXPERIMENTAL
+#EXPERIMENTAL" (實驗性)、"STABLE" (穩定)、"DEPRECATED" (已棄用)。
+[Severity]: High
