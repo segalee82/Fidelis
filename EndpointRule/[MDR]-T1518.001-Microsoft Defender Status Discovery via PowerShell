@@ -1,0 +1,13 @@
+[Author]:sega
+
+[Coworker]:
+
+[Description]:
+This rule detects attempts to discover the operational status of Microsoft Defender by identifying specific PowerShell cmdlets launched from a command prompt.
+
+[status]: EXPERIMENTAL
+#EXPERIMENTAL" (實驗性)、"STABLE" (穩定)、"DEPRECATED" (已棄用)。
+
+[Severity]: Medium
+
+(Name = powershell.exe and (Command-line =~ Get-MpComputerStatus or Command-line =~ Get-Service -Name WinDefend)) and (Parent Name = cmd.exe) and (OS Type IN Windows)
