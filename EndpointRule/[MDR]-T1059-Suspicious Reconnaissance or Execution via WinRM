@@ -1,0 +1,14 @@
+[Author]:sega
+
+[Coworker]:
+
+[Description]:
+This rule detects potential malicious use of Windows Remote Management (WinRM) by identifying common reconnaissance commands or advanced script execution patterns within a wsmprovhost.exe process.
+
+[status]: EXPERIMENTAL
+#EXPERIMENTAL" (實驗性)、"STABLE" (穩定)、"DEPRECATED" (已棄用)。
+
+[Severity]: High
+
+
+(Name = wsmprovhost.exe) and (Network Behavior:(Direction = Bidirectional) and Process Behavior:(Command-line =~ ipconfig or Command-line =~ whoami or Command-line =~ net or Command-line =~ powershell or Command-line =~ dir or Command-line =~ pwd or Command-line =~ encoding or Command-line =~ iex or Command-line =~ invoke)) and (OS Type IN Windows)
