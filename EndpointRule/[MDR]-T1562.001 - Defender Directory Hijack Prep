@@ -1,0 +1,7 @@
+[Author]:sega
+[Coworker]:
+[Description]:This rule detects suspicious file or folder creation within the protected Windows Defender Platform directory by common command-line tools, indicating a potential attempt to hijack or impair the antivirus service.
+[status]: EXPERIMENTAL
+EXPERIMENTAL" (實驗性)、"STABLE" (穩定)、"DEPRECATED" (已棄用)。
+
+(Name = cmd.exe or Name = explorer.exe or Name = powershell.exe) and (File Behavior:(Behavior Type IN File Create and Path =~ C:\ProgramData\Microsoft\Windows Defender\Platform\)) and (OS Type IN Windows)
