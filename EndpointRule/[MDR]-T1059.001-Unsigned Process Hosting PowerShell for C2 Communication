@@ -4,3 +4,6 @@
 [status]: EXPERIMENTAL
 #EXPERIMENTAL" (實驗性)、"STABLE" (穩定)、"DEPRECATED" (已棄用)。
 [Severity]: High
+
+
+(Name ![] and Name != System and Exe Certificate Publisher [] ) and (File Behavior:(Name =~ System.Management.Automation and (Behavior Type = File Read or Behavior Type = Load Executable/Library)) and Named Pipe Behavior:(Behavior Type IN Named Pipe Read and Name ![] ) and Network Behavior:(Remote IP !*= 172.16 and Remote IP !*= 172.17 and Remote IP !*= 172.18 and Remote IP !*= 172.19 and Remote IP !*= 172.20 and Remote IP !*= 172.21 and Remote IP !*= 172.22 and Remote IP !*= 172.23 and Remote IP !*= 172.24 and Remote IP !*= 172.25 and Remote IP !*= 172.26 and Remote IP !*= 172.27 and Remote IP !*= 172.28 and Remote IP !*= 172.29 and Remote IP !*= 172.30 and Remote IP !*= 172.31 and Remote IP !*= 192.168 and Remote IP !*= 10.)) and (OS Type IN Windows)
