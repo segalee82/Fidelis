@@ -1,0 +1,16 @@
+[Author]:sega
+
+[Coworker]:
+
+[Description]:
+This rule detects a suspicious process chain where a Windows Service Host (svchost.exe) spawns a Command Prompt (cmd.exe), 
+which in turn executes a hidden PowerShell window containing a download command. 
+This pattern is highly indicative of a malicious Scheduled Task used for persistence, 
+defense evasion, and execution. Attackers frequently create scheduled tasks that use cmd.exe as a launcher for a fileless PowerShell payload. 
+The payload then connects to a remote server to download a second-stage implant or tool. 
+This activity is associated with MITRE ATT&CK techniques T1053.005 (Scheduled Task), T1059.001 (PowerShell), and T1105 (Ingress Tool Transfer). 
+
+[status]: EXPERIMENTAL
+
+(Name = cmd.exe) and (Parent Name =~ svchost) and (Process Behavior:(Name =~ powershell and Command-line =~ -w and Command-line =~ hidden and Command-line =~ download)) and (OS Type IN Windows)
+TargetProcess 
