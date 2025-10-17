@@ -1,0 +1,17 @@
+[Author]:sega
+
+[Coworker]:
+
+[Description]: 
+This rule detects when a native, unmanaged Windows process (such as spoolsv. Exe, svchost. Exe, explorer. 
+Exe, etc.) loads the .NET Common Language Runtime (CLR). This behavior is highly anomalous because these native processes do not normally require the .NET framework to function. 
+An attacker may inject malicious C# or PowerShell code into a legitimate process to execute their payload while evading defenses. 
+To run this "managed" code, the compromised process is forced to load the CLR. 
+This rule identifies this activity by monitoring for the loading of core .NET modules (e.g., clr. Dll, clrjit. Dll) into high-value, non-. NET target processes, which is a strong indicator of a process injection attack.
+
+[status]: EXPERIMENTAL
+
+[Severity]:High
+
+
+(Name = spoolsv.exe or Name = lsass.exe or Name = services.exe or Name = winlogon.exe or Name = svchost.exe or Name = rundll32.exe or Name = regsvr32.exe or Name = mshta.exe or Name = explorer.exe or Name = cscript.exe or Name = wscript.exe or Name = notepad.exe or Name = mspaint.exe or Name = calc.exe) and (File Behavior:(Behavior Type IN Load Executable/Library and (Name = clr.dll or Name = clrjit.dll))) and (OS Type IN Windows)
